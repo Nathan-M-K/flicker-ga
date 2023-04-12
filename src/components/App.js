@@ -1,20 +1,19 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import SearchPage from './SearchPage'
 
-import './App.css';
+import SearchPage from './SearchPage'
+import SearchResults from './SearchResults'
+import PhotoResults from './PhotoResults'
+import './App.css'
 
 function App() {
   return (
     <BrowserRouter>
-      <h1>Flickr</h1>
       <Routes>
-        <Route path="/" element={<SearchPage />}>
-          <Route index element={<p>Enter a search to begin</p>} />
-          <Route
-            path="/search/:queryText"
-            element={<p>Search results will come here</p>}
-          />
-        </Route>
+        <Route path='/' element={<SearchPage />}>
+					<Route index element={<p>Enter a search to begin</p>} />
+					<Route path='/search/:queryText' element={<SearchResults />} />
+				</Route>
+				<Route path='/photo/:photoId' element={<PhotoResults />} />
       </Routes>  
     </BrowserRouter>
   );
